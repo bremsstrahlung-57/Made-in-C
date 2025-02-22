@@ -55,6 +55,26 @@ int insertAfter(Node *prevNode, int data)
     return 1;
 }
 
+int insertAfterSP(Node *head,int after, int data)
+{
+    Node *current = head;
+    while (current->data != after && current->next != NULL)
+    {
+        current = current->next;
+    }
+    if (current == NULL){
+        printf("%d not in List\n",after);
+        return 0;
+    }
+    Node *newNode = createNode(data);
+    if (newNode == NULL){
+        return 0;
+    }
+    newNode->next = current->next;
+    current->next = newNode;
+    return 1;
+}
+
 Node *deleteNode(Node *head, int key)
 {
     if (head == NULL)
@@ -127,6 +147,7 @@ int main()
     head = insertAtBeginning(head, 20);
     head = insertAtEnd(head, 30);
     insertAfter(head->next, 40);
+    insertAfterSP(head, 10, 50);
 
     printf("Linked list: ");
     printList(head);

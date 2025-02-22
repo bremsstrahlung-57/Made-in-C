@@ -79,6 +79,30 @@ int insertAfter(Node *prevNode, int data)
     return 1;
 }
 
+int insertAfterSP(Node *head, int after, int data)
+{
+    Node *current = head;
+    while (current->data != after && current->next != NULL)
+    {
+        current = current->next;
+    }
+    if (current->data != after)
+    {
+        printf("%d not in List\n", after);
+        return 0;
+    }
+    Node *newNode = createNode(data);
+    if (newNode == NULL)
+    {
+        return 0;
+    }
+    newNode->next = current->next;
+    current->next = newNode;
+    current->next->next->prev = newNode;
+    newNode->prev = current;
+    return 1;
+}
+
 void printListForward(Node *head)
 {
     Node *currentNode = head;
@@ -165,6 +189,7 @@ int main()
     head = insertAtBeginning(head, 20);
     head = insertAtEnd(head, 30);
     insertAfter(head->next, 40);
+    insertAfterSP(head, 10, 50);
 
     printf("Doubly Linked List Forward: ");
     printListForward(head);
