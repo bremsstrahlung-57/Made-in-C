@@ -1,6 +1,8 @@
-/data_structures/queues
+.vscode
+/BookBot/book_bot
 /data_structures/stacks
+/data_structures/queues
 /data_structures/linked_list
 /data_structures/doubly_linked_lists
-/BookBot/book_bot
-.vscode
+/data_structures/circular_singly_linked_list
+patterns
